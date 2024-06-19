@@ -1,0 +1,14 @@
+{
+    "add_line": "Add line",
+    "manage_line": "Manage line",
+    "add_station": "Add station",
+    "manage_station": "Manage station",
+    "add_branch_post": "Add branch post",
+    "manage_branch_post": "Manage branch post",
+    "add_standoff_post": "Add stand-off post",
+    "manage_standoff_post": "Manage stand-off post",
+    "select_language": "Select Language",
+    "exit": "Exit",
+    "title": "TimeTable Planner",
+    "select_action": "Select action"
+}

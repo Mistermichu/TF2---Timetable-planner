@@ -1,0 +1,14 @@
+{
+    "add_line": "Utórz linię",
+    "manage_line": "Zarządzaj linią",
+    "add_station": "Utwórz stację",
+    "manage_station": "Zarządzaj stacją",
+    "add_branch_post": "Utwórz posterunek odgałęźny",
+    "manage_branch_post": "Zarządzaj posterunkiem odgałęźnym",
+    "add_standoff_post": "Utwórz posterunek odstępowy",
+    "manage_standoff_post": "Zarządzaj posterunkiem odstępowym",
+    "select_language": "Wybierz język",
+    "exit": "Wyjście",
+    "title": "Planer rozkładów jazdy",
+    "select_action": "Wybierz akcje"
+}
