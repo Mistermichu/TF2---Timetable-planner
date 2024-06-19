@@ -1,15 +1,15 @@
 import tkinter as tk
-import tkinter.simpledialog as simpledialog
-from tkinter import ttk
 import sys
-import json
 import os
-from functions import *
 
 
 def main():
+    sys.path.append(os.path.join(os.path.dirname(__file__), 'functions'))
+    from functions import get_language, load_messages
 
     def update_labels():
+        button_add_line_section.config(text=messages["add_line_section"])
+        button_manage_line_section.config(text=messages["manage_line_section"])
         button_add_line.config(text=messages["add_line"])
         button_manage_line.config(text=messages["manage_line"])
         button_add_station.config(text=messages["add_station"])
@@ -32,6 +32,8 @@ def main():
         global language_window
         language_window = tk.Toplevel(root)
         language_window.title(messages["select_language"])
+        language_window.geometry("250x250")
+        language_window.resizable(False, False)
 
         button_pl = tk.Button(
             language_window, text="pl", command=lambda: choose_language("pl"))
@@ -45,10 +47,22 @@ def main():
 
     root = tk.Tk()
     root.title(messages["title"])
+    root.geometry("500x500")
+    root.resizable(False, False)
 
     # Button container
     button_frame = tk.Frame(root)
     button_frame.pack(pady=10)
+
+    # Add line section
+    button_add_line_section = tk.Button(
+        root, text=messages["add_line_section"], command=lambda: None)
+    button_add_line_section.pack(fill=tk.X)
+
+    # Manage line section
+    button_manage_line_section = tk.Button(
+        root, text=messages["manage_line_section"], command=lambda: None)
+    button_manage_line_section.pack(fill=tk.X)
 
     # Add Line
     button_add_line = tk.Button(
@@ -92,7 +106,7 @@ def main():
 
     # Select language
     button_select_language = tk.Button(
-        root, text=messages["select_language"], command=on_select_language)
+        root, text=messages["select_language"], command=lambda: on_select_language())
     button_select_language.pack(fill=tk.X)
 
     # Exit program
