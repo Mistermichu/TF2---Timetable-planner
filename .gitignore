@@ -1,0 +1,75 @@
+# Pliki i katalogi Pythona
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyo
+*.pyd
+
+# Pliki logów
+*.log
+
+# Pliki wirtualnych środowisk
+env/
+venv/
+ENV/
+ENV.bak/
+venv.bak/
+
+# Pliki z zależnościami
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Pliki i katalogi tworzone przez IDE/edytory
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Pliki specyficzne dla systemów operacyjnych
+.DS_Store
+Thumbs.db
+
+# Pliki konfiguracyjne i zależności
+*.ini
+*.cfg
+*.env
+
+# Pliki z testami jednostkowymi i pokryciem kodu
+.coverage
+.tox/
+nosetests.xml
+test-reports/
+
+# Pliki dokumentacji
+docs/_build/
+
+# Pliki z kompilacji C
+*.o
+*.so
+*.dylib
+
+# Pliki bazy danych
+*.db
+*.sqlite
+
+# Pliki statyczne generowane przez frameworki webowe
+staticfiles/
+media/
+
+# Pliki z tłumaczeniami
+*.mo
+*.pot
+
+# Pliki tymczasowe
+tmp/
+temp/
+*.tmp
+*.swp
+*.bak
+*.old
+*.orig
+
+# Pliki specyficzne dla projektu
+config.yaml
+secret.json
