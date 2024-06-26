@@ -2,19 +2,27 @@ import json
 import os
 from tkinter import messagebox
 
-# Check line / post / station name requirements
+# Check new file input
 
 
-def check_name_requirements_and_create(folder_name, file_name, messages, output_message, data_to_be_saved):
+def check_new_file(folder_name, file_name, file_data, messages):
     file_path = os.path.join(folder_name, file_name + ".json")
     if os.path.exists(file_path):
         messagebox.showerror(messages["error"], messages["file_exists"])
+        return
     elif len(file_name) == 0:
         messagebox.showerror(
-            messages["error"], messages[output_message])
+            messages["error"], messages["missing_data"])
+        return
     else:
+        for key_value in file_data.values():
+            if not key_value:
+                messagebox.showerror(
+                    messages["error"], messages["missing_data"])
+                return
         with open(file_path, 'w') as file:
-            json.dump(data_to_be_saved, file)
+            json.dump(file_data, file)
+            return
 
 
 # Language settings

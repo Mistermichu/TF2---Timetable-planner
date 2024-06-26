@@ -16,22 +16,33 @@ def create_line_section(root, messages):
 
     def submit_create_line_section():
         sys.path.append(os.path.join(os.path.dirname(__file__), 'functions'))
-        from functions import generate_timetable, check_name_requirements_and_create
+        from functions import generate_timetable, check_new_file
 
-        line_section_name = entry_line_section_name.get()
+        folder_name = "line sections"
+        line_section_name = str(entry_line_section_name.get())
         track_number = 1
+
+        try:
+            speed_limit = int(entry_speed_limit.get())
+            speed_limit = str(speed_limit)
+        except ValueError:
+            from tkinter import messagebox
+            messagebox.showerror(
+                messages["error"], messages["incorrect_value"])
+            create_line_section_window.destroy()
+            return
 
         line_section_data = {
             "track_number": track_number,
             "starting_point": entry_starting_point.get(),
             "ending_point": entry_ending_point.get(),
-            "speed_limit": entry_speed_limit.get(),
+            "speed_limit": speed_limit,
             "electrification_status": var_electrification_status.get(),
             "time_table": generate_timetable()
         }
 
-        check_name_requirements_and_create(
-            'line sections', line_section_name, messages, "missing_line_section_name", line_section_data)
+        check_new_file(folder_name, line_section_name,
+                       line_section_data, messages)
 
         create_line_section_window.destroy()
 
@@ -82,12 +93,12 @@ def create_line_section(root, messages):
     label_electrification_status = tk.Label(
         create_line_section_window, text=messages["electrified"])
     label_electrification_status.grid(row=row_value, column=0, sticky="W")
-    var_electrification_status = tk.BooleanVar()
+    var_electrification_status = tk.StringVar(value="No")
     radio_electrification_status_yes = tk.Radiobutton(
-        create_line_section_window, text=messages["yes"], variable=var_electrification_status, value=True)
+        create_line_section_window, text=messages["yes"], variable=var_electrification_status, value="Yes")
     radio_electrification_status_yes.grid(row=row_value, column=1)
     radio_electrification_status_no = tk.Radiobutton(
-        create_line_section_window, text=messages["no"], variable=var_electrification_status, value=False)
+        create_line_section_window, text=messages["no"], variable=var_electrification_status, value="No")
     radio_electrification_status_no.grid(row=row_value, column=2)
 
     row_value += 1

@@ -24,5 +24,6 @@
     "submit": "Submit",
     "error": "Error",
     "file_exists": "File already exists",
-    "missing_line_section_name": "Line section name required"
+    "missing_data": "Missing data",
+    "incorrect_value": "Value incorrect"
 }
