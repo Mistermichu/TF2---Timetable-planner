@@ -12,5 +12,17 @@
     "select_language": "Select Language",
     "exit": "Exit",
     "title": "TimeTable Planner",
-    "select_action": "Select action"
+    "select_action": "Select action",
+    "create_line_section": "Create Line Section",
+    "line_section_name": "Line Section Name",
+    "starting_point": "Starting Point: ",
+    "ending_point": "Ending Point: ",
+    "speed_limit": "Speed Limit: ",
+    "electrified": "Electrified?: ",
+    "yes": "Yes",
+    "no": "No",
+    "submit": "Submit",
+    "error": "Error",
+    "file_exists": "File already exists",
+    "missing_line_section_name": "Line section name required"
 }

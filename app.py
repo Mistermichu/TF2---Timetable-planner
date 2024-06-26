@@ -5,7 +5,10 @@ import os
 
 def main():
     sys.path.append(os.path.join(os.path.dirname(__file__), 'functions'))
-    from functions import get_language, load_messages
+    from functions import get_language, load_messages, get_available_languages, generate_timetable
+    from linesection import create_line_section
+
+    languages = get_available_languages()
 
     def update_labels():
         button_add_line_section.config(text=messages["add_line_section"])
@@ -35,13 +38,16 @@ def main():
         language_window.geometry("250x250")
         language_window.resizable(False, False)
 
-        button_pl = tk.Button(
-            language_window, text="pl", command=lambda: choose_language("pl"))
-        button_pl.pack(fill=tk.X)
+        selected_language = tk.StringVar()
+        selected_language.set("en")
 
-        button_en = tk.Button(
-            language_window, text="en", command=lambda: choose_language("en"))
-        button_en.pack(fill=tk.X)
+        for language_code in languages:
+            language_button = tk.Button(
+                language_window,
+                text=language_code,
+                command=lambda lc=language_code: choose_language(lc)
+            )
+            language_button.pack(fill=tk.X)
 
     messages = load_messages()
 
@@ -56,7 +62,7 @@ def main():
 
     # Add line section
     button_add_line_section = tk.Button(
-        root, text=messages["add_line_section"], command=lambda: None)
+        root, text=messages["add_line_section"], command=lambda: create_line_section(root, messages))
     button_add_line_section.pack(fill=tk.X)
 
     # Manage line section
@@ -106,7 +112,7 @@ def main():
 
     # Select language
     button_select_language = tk.Button(
-        root, text=messages["select_language"], command=lambda: on_select_language())
+        root, text=messages["select_language"], command=on_select_language)
     button_select_language.pack(fill=tk.X)
 
     # Exit program
