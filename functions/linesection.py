@@ -10,9 +10,10 @@
 import sys
 import os
 import tkinter as tk
+from tkinter import ttk
 
 
-def create_line_section(root, messages):
+def create_line_section(root, messages, post_list):
 
     def submit_create_line_section():
         sys.path.append(os.path.join(os.path.dirname(__file__), 'functions'))
@@ -41,8 +42,8 @@ def create_line_section(root, messages):
             "time_table": generate_timetable()
         }
 
-        check_new_file(folder_name, line_section_name,
-                       line_section_data, messages)
+        check_new_file(folder_name=folder_name, file_name=line_section_name,
+                       file_data=line_section_data, messages=messages)
 
         create_line_section_window.destroy()
 
@@ -64,7 +65,8 @@ def create_line_section(root, messages):
     label_starting_point = tk.Label(
         create_line_section_window, text=messages["starting_point"])
     label_starting_point.grid(row=row_value, column=0, sticky="w")
-    entry_starting_point = tk.Entry(create_line_section_window)
+    entry_starting_point = ttk.Combobox(
+        create_line_section_window, values=post_list.get_names())
     entry_starting_point.grid(row=row_value, column=1)
 
     row_value += 1
@@ -73,7 +75,8 @@ def create_line_section(root, messages):
     label_ending_point = tk.Label(
         create_line_section_window, text=messages["ending_point"])
     label_ending_point.grid(row=row_value, column=0, sticky="w")
-    entry_ending_point = tk.Entry(create_line_section_window)
+    entry_ending_point = ttk.Combobox(
+        create_line_section_window, values=post_list.get_names())
     entry_ending_point.grid(row=row_value, column=1)
 
     row_value += 1

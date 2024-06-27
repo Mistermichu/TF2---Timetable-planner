@@ -5,10 +5,12 @@ import os
 
 def main():
     sys.path.append(os.path.join(os.path.dirname(__file__), 'functions'))
-    from functions import get_language, load_messages, get_available_languages, generate_timetable
+    from functions import get_language, load_messages, get_available_languages, PostList
     from linesection import create_line_section
+    from posts import create_standoff_post
 
     languages = get_available_languages()
+    post_list = PostList()
 
     def update_labels():
         button_add_line_section.config(text=messages["add_line_section"])
@@ -53,22 +55,24 @@ def main():
 
     root = tk.Tk()
     root.title(messages["title"])
-    root.geometry("500x500")
     root.resizable(False, False)
 
-    # Button container
-    button_frame = tk.Frame(root)
-    button_frame.pack(pady=10)
+    # Infrastructure column
+    row_value = 0
+    column_value = 0
 
-    # Add line section
+    # Line section
+    label_line_section = tk.Label(root, text=messages["line_section"])
+    label_line_section.grid(row=row_value, column=column_value)
+    row_value += 1
     button_add_line_section = tk.Button(
-        root, text=messages["add_line_section"], command=lambda: create_line_section(root, messages))
-    button_add_line_section.pack(fill=tk.X)
-
-    # Manage line section
+        root, text=messages["add_line_section"], command=lambda: create_line_section(root, messages, post_list))
+    button_add_line_section.grid(row=row_value, column=column_value)
+    row_value += 1
     button_manage_line_section = tk.Button(
         root, text=messages["manage_line_section"], command=lambda: None)
-    button_manage_line_section.pack(fill=tk.X)
+    button_manage_line_section.grid(row=row_value, column=column_value)
+    row_value += 1
 
     # Add Line
     button_add_line = tk.Button(
@@ -102,7 +106,7 @@ def main():
 
     # Add standoff post
     button_add_standoff_post = tk.Button(
-        root, text=messages["add_standoff_post"], command=lambda: None)
+        root, text=messages["add_standoff_post"], command=lambda: create_standoff_post(root, messages, post_list))
     button_add_standoff_post.pack(fill=tk.X)
 
     # Manage standoff post

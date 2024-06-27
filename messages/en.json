@@ -1,4 +1,5 @@
 {
+    "line_section": "Line Section",
     "add_line_section": "Add line section",
     "manage_line_section": "Manage line section",
     "add_line": "Add line",
@@ -25,5 +26,8 @@
     "error": "Error",
     "file_exists": "File already exists",
     "missing_data": "Missing data",
-    "incorrect_value": "Value incorrect"
+    "incorrect_value": "Value incorrect",
+    "post_already_created": "Post name already exists",
+    "create_standoff_post": "Create Stand-Off post",
+    "add_standoff_post_name": "Add Stand-Off post name"
 }
