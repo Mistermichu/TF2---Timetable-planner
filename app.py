@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter.font as tkfont
 import sys
 import os
 
@@ -6,15 +7,16 @@ import os
 def main():
     sys.path.append(os.path.join(os.path.dirname(__file__), 'functions'))
     from functions import get_language, load_messages, get_available_languages, PostList
-    from linesection import create_line_section
+    from linesection import create_block_section
     from posts import create_standoff_post
 
     languages = get_available_languages()
     post_list = PostList()
 
     def update_labels():
-        button_add_line_section.config(text=messages["add_line_section"])
-        button_manage_line_section.config(text=messages["manage_line_section"])
+        button_add_block_section.config(text=messages["add_block_section"])
+        button_manage_block_section.config(
+            text=messages["manage_block_section"])
         button_add_line.config(text=messages["add_line"])
         button_manage_line.config(text=messages["manage_line"])
         button_add_station.config(text=messages["add_station"])
@@ -56,72 +58,108 @@ def main():
     root = tk.Tk()
     root.title(messages["title"])
     root.resizable(False, False)
+    # Define column width
+    columns_number = 3
+    column_width = 50
+    for column in range(columns_number):
+        root.grid_columnconfigure(column, minsize=column_width)
+    # Main Labels Fonts
+    bold_font = tkfont.Font(weight="bold")
 
-    # Infrastructure column
+    #
+    #
+    #  Infrastructure column
     row_value = 0
     column_value = 0
 
-    # Line section
-    label_line_section = tk.Label(root, text=messages["line_section"])
-    label_line_section.grid(row=row_value, column=column_value)
+    # Station
+    label_station = tk.Label(root, text=messages["stations"], font=bold_font)
+    label_station.grid(row=row_value, column=column_value)
     row_value += 1
-    button_add_line_section = tk.Button(
-        root, text=messages["add_line_section"], command=lambda: create_line_section(root, messages, post_list))
-    button_add_line_section.grid(row=row_value, column=column_value)
-    row_value += 1
-    button_manage_line_section = tk.Button(
-        root, text=messages["manage_line_section"], command=lambda: None)
-    button_manage_line_section.grid(row=row_value, column=column_value)
-    row_value += 1
-
-    # Add Line
-    button_add_line = tk.Button(
-        root, text=messages["add_line"], command=lambda: None)
-    button_add_line.pack(fill=tk.X)
-
-    # Manage Line
-    button_manage_line = tk.Button(
-        root, text=messages["manage_line"], command=lambda: None)
-    button_manage_line.pack(fill=tk.X)
-
-    # Add station
     button_add_station = tk.Button(
-        root, text=messages["add_station"], command=lambda: None)
-    button_add_station.pack(fill=tk.X)
-
-    # Manage station
+        root, text=messages["add_station"], width=column_width, command=lambda: None)
+    button_add_station.grid(row=row_value, column=column_value)
+    row_value += 1
     button_manage_station = tk.Button(
-        root, text=messages["manage_station"], command=lambda: None)
-    button_manage_station.pack(fill=tk.X)
+        root, text=messages["manage_station"], width=column_width, command=lambda: None)
+    button_manage_station.grid(row=row_value, column=column_value)
+    row_value += 1
 
-    # Add branch post
-    button_add_branch_post = tk.Button(
-        root, text=messages["add_branch_post"], command=lambda: None)
-    button_add_branch_post.pack(fill=tk.X)
-
-    # Manage branch post
-    button_manage_branch_post = tk.Button(
-        root, text=messages["manage_branch_post"], command=lambda: None)
-    button_manage_branch_post.pack(fill=tk.X)
-
-    # Add standoff post
+    # Standoff post
+    label_standoff_post = tk.Label(
+        root, text=messages["standoff_post"], font=bold_font)
+    label_standoff_post.grid(row=row_value, column=column_value)
+    row_value += 1
     button_add_standoff_post = tk.Button(
-        root, text=messages["add_standoff_post"], command=lambda: create_standoff_post(root, messages, post_list))
-    button_add_standoff_post.pack(fill=tk.X)
-
-    # Manage standoff post
+        root, text=messages["add_standoff_post"], width=column_width, command=lambda: create_standoff_post(root, messages, post_list))
+    button_add_standoff_post.grid(row=row_value, column=column_value)
+    row_value += 1
     button_manage_standoff_post = tk.Button(
-        root, text=messages["manage_standoff_post"], command=lambda: None)
-    button_manage_standoff_post.pack(fill=tk.X)
+        root, text=messages["manage_standoff_post"], width=column_width, command=lambda: None)
+    button_manage_standoff_post.grid(row=row_value, column=column_value)
+    row_value += 1
+
+    # Branch post
+    label_branch_post = tk.Label(
+        root, text=messages["branch_post"], font=bold_font)
+    label_branch_post.grid(row=row_value, column=column_value)
+    row_value += 1
+    button_add_branch_post = tk.Button(
+        root, text=messages["add_branch_post"], width=column_width, command=lambda: None)
+    button_add_branch_post.grid(row=row_value, column=column_value)
+    row_value += 1
+    button_manage_branch_post = tk.Button(
+        root, text=messages["manage_branch_post"], width=column_width, command=lambda: None)
+    button_manage_branch_post.grid(row=row_value, column=column_value)
+    row_value += 1
+
+    # Block section
+    label_block_section = tk.Label(
+        root, text=messages["block_section"], font=bold_font)
+    label_block_section.grid(row=row_value, column=column_value)
+    row_value += 1
+    button_add_block_section = tk.Button(
+        root, text=messages["add_block_section"], width=column_width, command=lambda: create_block_section(root, messages, post_list))
+    button_add_block_section.grid(row=row_value, column=column_value)
+    row_value += 1
+    button_manage_block_section = tk.Button(
+        root, text=messages["manage_block_section"], width=column_width, command=lambda: None)
+    button_manage_block_section.grid(row=row_value, column=column_value)
+    row_value += 1
+
+    # Track line
+    label_line = tk.Label(root, text=messages["track_line"], font=bold_font)
+    label_line.grid(row=row_value, column=column_value)
+    row_value += 1
+    button_add_line = tk.Button(
+        root, text=messages["add_line"], width=column_width, command=lambda: None)
+    button_add_line.grid(row=row_value, column=column_value)
+    row_value += 1
+    button_manage_line = tk.Button(
+        root, text=messages["manage_line"], width=column_width, command=lambda: None)
+    button_manage_line.grid(row=row_value, column=column_value)
+    row_value += 1
+
+    #
+    #
+    # Other
+    row_value = 0
+    column_value = 2
+    label_other_options = tk.Label(
+        root, text=messages["other"], font=bold_font)
+    label_other_options.grid(row=row_value, column=column_value)
+    row_value += 1
 
     # Select language
     button_select_language = tk.Button(
-        root, text=messages["select_language"], command=on_select_language)
-    button_select_language.pack(fill=tk.X)
+        root, text=messages["select_language"], width=column_width, command=on_select_language)
+    button_select_language.grid(row=row_value, column=column_value)
+    row_value += 1
 
     # Exit program
-    button_exit = tk.Button(root, text=messages["exit"], command=root.quit)
-    button_exit.pack(fill=tk.X)
+    button_exit = tk.Button(
+        root, text=messages["exit"], width=column_width, command=root.quit)
+    button_exit.grid(row=row_value, column=column_value)
 
     root.mainloop()
 

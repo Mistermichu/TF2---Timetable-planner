@@ -1,7 +1,7 @@
 {
-    "line_section": "Line Section",
-    "add_line_section": "Add line section",
-    "manage_line_section": "Manage line section",
+    "block_section": "Block Section",
+    "add_block_section": "Add block section",
+    "manage_block_section": "Manage block section",
     "add_line": "Add line",
     "manage_line": "Manage line",
     "add_station": "Add station",
@@ -14,8 +14,8 @@
     "exit": "Exit",
     "title": "TimeTable Planner",
     "select_action": "Select action",
-    "create_line_section": "Create Line Section",
-    "line_section_name": "Line Section Name",
+    "create_block_section": "Create block Section",
+    "block_section_name": "Block Section Name",
     "starting_point": "Starting Point: ",
     "ending_point": "Ending Point: ",
     "speed_limit": "Speed Limit: ",
@@ -29,5 +29,10 @@
     "incorrect_value": "Value incorrect",
     "post_already_created": "Post name already exists",
     "create_standoff_post": "Create Stand-Off post",
-    "add_standoff_post_name": "Add Stand-Off post name"
+    "add_standoff_post_name": "Add Stand-Off post name",
+    "track_line": "Track line",
+    "stations": "Stations",
+    "standoff_post": "Stand-Off Post",
+    "branch_post": "Branch Post",
+    "other": "Other"
 }
